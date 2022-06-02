@@ -6,7 +6,7 @@ const app = express();
  
  
 app.use(compression());
-
+app.use(express.static('public'))
 app.use(express.json()) // body parser
 app.use(express.urlencoded({extended: true})) // para que haga pedido url encoded
 
