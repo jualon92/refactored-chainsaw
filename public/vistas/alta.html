@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script async defer src="../js/alta.js"></script>
+</head>
+
+<body>
+
+    <ul>
+        <!--  estatico en una spa-->
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../vistas/alta.html">Alta</a></li>
+
+    </ul>
+
+
+    <h1>Registro de operacion </h1> 
+
+    <!--formulario alta operacion-->
+    <form action="" class="formulario-alta">
+        
+        <label for="concepto">Concepto</label>
+        <input type="text" id="concepto" name="concepto" class="input-concepto">
+
+
+        <label for="monto">Monto</label>
+        <input type="number" id="monto" name="monto" class="input-monto">
+
+        <label for="fecha">fecha</label>
+        <input type="date" for="fecha" id="fecha" name="fecha" class="input-fecha">
+
+        <label for="tipo">tipo</label>
+        <select id="tipo" name="tipo">
+            <option value="EGRESO">EGRESO</option>
+            <option value="INGRESO">EGRESO</option>
+
+        </select>
+        <button type="button" class="btn-agregarOperacion">Agregar Operacion</button>
+    </form>
+
+ 
+</body>
+ 
+</html>

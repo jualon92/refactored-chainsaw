@@ -1,0 +1,19 @@
+.listado{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    max-width: 60%;
+    margin-bottom: 30px;
+}
+
+.formulario-alta{
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+}
+
+.btn-agregarOperacion{
+    align-self: end;
+    margin-top: 20px;
+}
