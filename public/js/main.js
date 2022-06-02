@@ -18,7 +18,8 @@ const calcularAcuMonto = (lista, palabraClave ) => { //get total
 
 
 const getBalanceMonto = async () => {
-    const operaciones = await getOperaciones()
+    //podrian ahorrarse fetch con uno solo onLoad, pero si el usuario pasa mucho tiempo en la pagina?
+    const operaciones = await getOperaciones()  
     console.log(operaciones)
     const totalIngreso=  calcularAcuMonto(operaciones, "INGRESO")
      
@@ -55,7 +56,25 @@ const getUltimos = async (cantidadAMostrar) => {
     // grab last n items
     const ultimasOperaciones = listaOrdenadaFecha.slice(0,cantidadAMostrar)
     console.log(ultimasOperaciones)
-    document.getElementById("listado").innerHTML = JSON.stringify(ultimasOperaciones) 
+
+    const listaNormalizada = normalizarLista(ultimasOperaciones)
+ 
+    listaNormalizada.forEach(ele => {  
+        document.getElementById("listado").innerHTML += `<div class="elemento-operacion">  ${JSON.stringify(ele)} </div>`
+    });
+  //  document.getElementById("listado").innerHTML += JSON.stringify(ultimasOperaciones) 
+
+}
+
+//display lista
+const normalizarLista = (lista) => { //seria mucho mas comodo con un template engine utilizar ${concepto.operacion}, etc.
+    let nuevaLista = []
+    lista.forEach(operacion => {
+        const nuevaOperacion = {concepto:operacion.concepto, monto:operacion.monto, 
+        fecha:operacion.fecha, tipo:operacion.tipo}
+        nuevaLista.push(nuevaOperacion)
+    });
+    return nuevaLista
 }
 
 const getTotalesMonto  = async()=> {
@@ -66,7 +85,6 @@ const getTotalesMonto  = async()=> {
 }
 
 getTotalesMonto()
- 
 getBalanceMonto()
 getUltimos(3)
 
