@@ -58,7 +58,15 @@ const getUltimos = async (cantidadAMostrar) => {
     document.getElementById("listado").innerHTML = JSON.stringify(ultimasOperaciones) 
 }
 
+const getTotalesMonto  = async()=> {
+    const operaciones = await getOperaciones() 
+    document.querySelector(".ingresos-total").innerHTML =  calcularAcuMonto(operaciones, "INGRESO")
+    document.querySelector(".egresos-total").innerHTML = calcularAcuMonto(operaciones, "EGRESO")
+    
+}
 
+getTotalesMonto()
+ 
 getBalanceMonto()
 getUltimos(3)
 
