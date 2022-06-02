@@ -53,11 +53,14 @@ class OperacionModel {
     }
 
 
-    static async updateOne(id, note, tag) {
+    static async updateOne(id, concepto,monto,fecha,tipo ) {
         let ele = await Operacion.findByPk(id)
         return ele.update({
-            note: note,
-            tag: tag
+            concepto, // mismo que concepto:concepto
+            monto, 
+            fecha,
+            tipo
+          
         })
 
     }

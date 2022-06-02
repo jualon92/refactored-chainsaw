@@ -47,14 +47,16 @@ const CreateOperacion = async (req,res) => {
 
 const UpdateOperacion = async (req, res) => {
     let id = req.params.id
-    let note = req.body.note 
-    let tag = req.body.tag
+    let concepto  = req.body.concepto // unpacking, deconstructuring podria hacerse mejor
+    let monto = req.body.monto
+    let fecha = req.body.fecha
+    let tipo = req.body.tipo
     try {
-        const updateOperacion = await NotesOperacion.updateOne(id, note, tag )
+        const updateOperacion = await OperacionModel.updateOne(id, concepto,monto,fecha,tipo  )
         return res.json(updateOperacion)
     } catch (error) {
         console.log(`Error en update Operacion: ${error.message}`)
-        console.log(id,note,tag)
+       
         return {}
     }
 }
