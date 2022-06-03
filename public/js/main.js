@@ -32,10 +32,10 @@ const getBalanceMonto = async () => {
 }
 
 function compare( a, b ) {
-    if ( a.fecha < b.fecha ){
+    if ( a.fecha > b.fecha ){
       return -1;
     }
-    if ( a.fecha > b.fecha ){
+    if ( a.fecha < b.fecha ){
       return 1;
     }
     return 0;
@@ -86,7 +86,7 @@ const getTotalesMonto  = async()=> {
 
 getTotalesMonto()
 getBalanceMonto()
-getUltimos(3)
+getUltimos(5)
 
 
 
