@@ -1,3 +1,4 @@
+import Lista from "./helpers/Lista.js"
 
 console.warn("hola mundo")
 
@@ -57,8 +58,8 @@ const getUltimos = async (cantidadAMostrar) => {
     const ultimasOperaciones = listaOrdenadaFecha.slice(0,cantidadAMostrar)
     console.log(ultimasOperaciones)
 
-    const listaNormalizada = normalizarLista(ultimasOperaciones)
- 
+   // const listaNormalizada = normalizarLista(ultimasOperaciones)
+    const listaNormalizada = Lista.normalizar(ultimasOperaciones) 
     listaNormalizada.forEach(ele => {  
         document.getElementById("listado").innerHTML += `<div class="elemento-operacion">  ${JSON.stringify(ele)} </div>`
     });
@@ -66,16 +67,7 @@ const getUltimos = async (cantidadAMostrar) => {
 
 }
 
-//display lista
-const normalizarLista = (lista) => { //seria mucho mas comodo con un template engine utilizar ${concepto.operacion}, etc.
-    let nuevaLista = []
-    lista.forEach(operacion => {
-        const nuevaOperacion = {concepto:operacion.concepto, monto:operacion.monto, 
-        fecha:operacion.fecha, tipo:operacion.tipo}
-        nuevaLista.push(nuevaOperacion)
-    });
-    return nuevaLista
-}
+ 
 
 const getTotalesMonto  = async()=> {
     const operaciones = await getOperaciones() 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script async defer src="../js/listados.js" type="module"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <!--  estatico en una spa-->
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../vistas/alta.html">Alta</a></li>
+        <li><a href="../vistas/listado.html">Listado</a></li>
+
+    </ul>
+    <h1>Listado</h1>
+
+    <form action=" "> 
+        <label for="tipo"> elegir tipo de listado a mostrar: </label>
+        <select id="tipo" name="tipo" class="input-mostrar">
+            <option type="submit" value="EGRESO">EGRESO</option>
+            <option   type="submit" value="INGRESO">INGRESO</option>
+
+        </select>
+    </form>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">concepto</th>
+                <th scope="col">monto</th>
+                <th scope="col">fecha</th>
+                <th scope="col">tipo</th>
+              </tr>
+            </thead>
+            <tbody class="tabla-disp">
+
+            </tbody>
+          </table>
+</body>
+</html>
