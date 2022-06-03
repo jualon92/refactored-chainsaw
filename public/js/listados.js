@@ -1,7 +1,9 @@
 
 
 console.warn("listado")
-let DATA = []
+let DATA = [] //no esta bueno var global, rever
+
+
 const borrar = (id) => {
     fetch(`/operaciones/${id}`, {
         method: 'DELETE',
@@ -31,6 +33,8 @@ const borrar = (id) => {
     });
 
 }
+ 
+
 
 document.querySelector(".input-mostrar").addEventListener("click", async (e) => {
 
@@ -84,3 +88,41 @@ document.querySelector(".input-mostrar").addEventListener("click", async (e) => 
 
 })
 
+
+
+
+
+
+
+
+
+
+const setDataInicial = async () => { 
+//data inicial
+let response = await fetch("/operaciones") //fetch 
+let data = await response.json()
+
+console.log(data)
+
+//filtrar segun valor seleccionado
+let dataFiltrada = data.filter(operacion => operacion.tipo == "EGRESO")
+dataFiltrada.forEach(ele => {
+
+        
+    document.querySelector(".tabla-disp").innerHTML +=
+        `
+    <tr class="table-active">
+        <th scope="row">${ele.concepto}</th>
+        <td>${ele.monto}</td>
+        <td>${ele.fecha}</td>
+        <td>${ele.tipo}</td>
+        <td scope="col"> <button type="button" class="btn-eliminarOp" onclick='borrar(${ele.id})'>X</button> </td>
+    </tr>
+     `
+
+});
+
+}
+
+
+setDataInicial()
