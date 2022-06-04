@@ -12,7 +12,7 @@ nodemon run dev
 
 ## Back
 
-CRUD intentando respetar modelo MVC
+CRUD intentando respetar MVC
 
 Express router
 
