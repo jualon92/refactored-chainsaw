@@ -96,7 +96,7 @@ const getTotalesMonto  = async()=> {
 
 getTotalesMonto()
 getBalanceMonto()
-getUltimos(5)
+getUltimos(10)
 
 
 
