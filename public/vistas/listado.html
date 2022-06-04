@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/estilos.css">
-    <script async defer src="../js/listados.js"  ></script>
+    <script async defer src="../js/listados.js"></script>
 
 
     <title>Document</title>
 </head>
+
 <body>
     <ul>
         <!--  estatico en una spa-->
@@ -21,15 +23,15 @@
     </ul>
     <h1>Listado</h1>
 
-    <form action=" "> 
+    <form action=" ">
         <label for="tipo"> elegir tipo de listado a mostrar: </label>
         <select id="tipo" name="tipo" class="input-mostrar">
             <option type="submit" value="EGRESO">EGRESO</option>
-            <option   type="submit" value="INGRESO">INGRESO</option>
+            <option type="submit" value="INGRESO">INGRESO</option>
 
         </select>
     </form>
-    
+
     <table class="table table-hover">
         <thead>
             <tr>
@@ -37,14 +39,28 @@
                 <th scope="col">monto</th>
                 <th scope="col">fecha</th>
                 <th scope="col">tipo</th>
+                <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
-              </tr>
-            </thead>
-            <tbody class="tabla-disp">
 
-            </tbody>
-          </table>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+            </tr>
+        </thead>
+        <tbody class="tabla-disp">
+
+        </tbody>
+    </table>
+
+
+
+
+    <div class="contenedor-editar">
+         
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
+
 </html>

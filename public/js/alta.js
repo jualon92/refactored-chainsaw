@@ -8,7 +8,7 @@ btnAgregarOperacion.addEventListener("click", e => {
     //crear elemento
     console.log("fui clickeado")
      
-    let concepto = document.querySelector(".input-concepto").value  //refactor
+    let concepto = document.querySelector(".input-concepto").value  //reever
     let monto = document.querySelector(".input-monto").value
     let fecha = document.querySelector(".input-fecha").value
     let tipo = document.querySelector(".input-tipo").value
