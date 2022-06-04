@@ -17,3 +17,18 @@
     align-self: end;
     margin-top: 20px;
 }
+
+
+@media (max-width:900px) and (pointer: coarse) {
+    table>:not(caption)>*>* {
+        /*overwrites bootstrap table style so they fit in smaller screens*/
+        padding:0.5rem 0.5rem!important;  
+    }
+}
+
+@media screen and (min-width:1000px){
+    .contenedor-home{
+        margin-left:16%;
+        margin-right:16%;
+    }
+}
