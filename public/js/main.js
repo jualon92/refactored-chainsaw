@@ -2,6 +2,20 @@ import Lista from "./helpers/Lista.js"
 
 console.warn("hola mundo")
 
+
+//seria mejor hacerlo con template engine ie handlebars 
+const getTemplate = (ele) => {
+
+    return `
+    <tr class="table-active">
+        <th scope="row">${ele.concepto}</th>
+        <td>${ele.monto}</td>
+        <td>${ele.fecha}</td>
+        <td>${ele.tipo}</td>
+    </tr>
+     `
+}
+
 const getOperaciones = async () => {
     let response = await fetch("/operaciones")
     let data = await response.json()
@@ -28,7 +42,7 @@ const getBalanceMonto = async () => {
     console.log(totalIngreso,totalEgreso)
 
     document.getElementById("balance-monto").innerHTML =  totalIngreso - totalEgreso
- 
+    
 
 }
 
@@ -61,13 +75,17 @@ const getUltimos = async (cantidadAMostrar) => {
    // const listaNormalizada = normalizarLista(ultimasOperaciones)
     const listaNormalizada = Lista.normalizar(ultimasOperaciones) 
     listaNormalizada.forEach(ele => {  
-        document.getElementById("listado").innerHTML += `<div class="elemento-operacion">  ${JSON.stringify(ele)} </div>`
+
+        document.querySelector(".tabla-disp").innerHTML +=
+        getTemplate(ele)
+
+         
     });
   //  document.getElementById("listado").innerHTML += JSON.stringify(ultimasOperaciones) 
 
 }
 
- 
+
 
 const getTotalesMonto  = async()=> {
     const operaciones = await getOperaciones() 
@@ -82,3 +100,4 @@ getUltimos(5)
 
 
 
+ 

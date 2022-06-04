@@ -42,25 +42,42 @@ const getFormularioEdit = (id) => {
 
 const editarOperacion = async (id) => {
     console.warn("editado")
+  
 
-    let concepto = document.querySelector(".input-concepto").value  //reever
-    let monto = document.querySelector(".input-monto").value
-    let fecha = document.querySelector(".input-fecha").value
-   
+    let inputConcepto = document.querySelector(".input-concepto") 
+    let inputMonto = document.querySelector(".input-monto")
+    let inputFecha = document.querySelector(".input-fecha")
+    let listaInputs = [inputConcepto, inputMonto, inputFecha]
 
-
-    document.querySelector(".input-concepto").value = ""
-    document.querySelector(".input-monto").value = ""
-    document.querySelector(".input-fecha").value = ""
+ 
 
     
-    let operacion = { concepto, monto, fecha }
-
+    
+   
+    var operacion = {}
+    
+    if (inputConcepto.value !== ""){ //refactor
+        operacion.concepto = inputConcepto.value
+    }
+    if (inputMonto.value !== ""){
+        operacion.monto = inputMonto.value
+        console.log("passing monto", inputMonto.value)
+        console.log("passing obj", operacion.monto)
+    }
+    if (inputFecha.value !== ""){
+        operacion.fecha = inputFecha.value
+    }
+    
+    listaInputs.forEach(input => {
+        input.value = "" // blank after pressing edit btn
+    });
+    
+    
     console.log(operacion)
     console.log(id)
    
 
-    fetch(`/operaciones/${id}`, { //hacerlo con
+    fetch(`/operaciones/${id}`, { //hacerlo con clase aux
         method: 'PUT', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -109,7 +126,11 @@ const borrar = (id) => {
 
 document.querySelector(".input-mostrar").addEventListener("click", async (e) => {
 
-
+    try{
+        document.querySelector(".contenedor-editar").innerHTML = ""
+    }catch(error){
+        console.log("form aun no existe", error.message())
+    }
     let valorSeleccionado = document.querySelector(".input-mostrar").value
     console.log("valor sel", valorSeleccionado)
 
