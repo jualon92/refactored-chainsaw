@@ -31,4 +31,12 @@
         margin-left:16%;
         margin-right:16%;
     }
+
+    .contenedor-alta{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
+

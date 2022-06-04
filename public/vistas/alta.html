@@ -4,53 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/estilos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/zephyr/bootstrap.min.css">
 
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="../css/estilos.css">
-    <script async defer  src="../js/alta.js"></script>
+    <script async defer src="../js/alta.js"></script>
 </head>
 
 <body>
 
-    <ul>
-        <!--  estatico en una spa-->
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../vistas/alta.html">Alta</a></li>
-        <li><a href="../vistas/listado.html">Listado</a></li>
+    <!--podria utilizarse template engine para evitar nav en cada html-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Operaciones</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    </ul>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home
+                     </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active" href="./alta.html">Alta  <span class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./listado.html">Listado</a>
+                    </li>
+              
+            </div>
+        </div>
+    </nav>
+
+    <div class="contenedor-alta">
+        <h1>Registro de operacion </h1>
+
+        <!--formulario alta operacion-->
+        <form action="" class="formulario-alta">
+
+            <label for="concepto">Concepto</label>
+            <input type="text" id="concepto" name="concepto" class="input-concepto">
 
 
-    <h1>Registro de operacion </h1> 
+            <label for="monto">Monto</label>
+            <input type="number" id="monto" name="monto" class="input-monto">
 
-    <!--formulario alta operacion-->
-    <form action="" class="formulario-alta">
-        
-        <label for="concepto">Concepto</label>
-        <input type="text" id="concepto" name="concepto" class="input-concepto">
+            <label for="fecha">fecha</label>
+            <input type="date" for="fecha" id="fecha" name="fecha" class="input-fecha">
 
+            <label for="tipo">tipo</label>
+            <select id="tipo" name="tipo" class="input-tipo">
+                <option value="EGRESO">EGRESO</option>
+                <option value="INGRESO">INGRESO</option>
 
-        <label for="monto">Monto</label>
-        <input type="number" id="monto" name="monto" class="input-monto">
-
-        <label for="fecha">fecha</label>
-        <input type="date" for="fecha" id="fecha" name="fecha" class="input-fecha">
-
-        <label for="tipo">tipo</label>
-        <select id="tipo" name="tipo" class="input-tipo">
-            <option value="EGRESO">EGRESO</option>
-            <option value="INGRESO">INGRESO</option>
-
-        </select>
-        <button type="button" class="btn-agregarOperacion">Agregar Operacion</button>
-    </form>
-
- 
+            </select>
+            <button type="button" class="btn-agregarOperacion">Agregar Operacion</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
 </body>
- 
+
 </html>
