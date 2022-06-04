@@ -13,17 +13,17 @@ const getTemplate = (ele) => {
         <td>${ele.monto}</td>
         <td>${ele.fecha}</td>
         <td>${ele.tipo}</td>
-        <td> <button type="button" class="btn-editar" onclick='mostrarFormularioEdit(${ele.id})'>Editar</button> </td>
+        <td> <button type="button" class="btn-editar" onclick='mostrarFormularioEdit(${JSON.stringify(ele)})'>Editar</button> </td>
         <td scope="col"> <button type="button" class="btn-eliminarOp" onclick='borrar(${ele.id})'>X</button> </td>
     </tr>
      `
 }
 
 
-const getFormularioEdit = (id) => {
-    return `<h2>Editar operacion</h2>
+const getFormularioEdit = (ele) => {
+    return `<h2>Editar operacion ${ele.concepto}</h2>
     <form action="" class="formulario-alta">
-
+        
         <label for="concepto">Concepto</label>
         <input type="text" id="concepto" name="concepto" class="input-concepto">
 
@@ -35,12 +35,12 @@ const getFormularioEdit = (id) => {
         <input type="date" for="fecha" id="fecha" name="fecha" class="input-fecha">
 
          
-        <button type="button" class="btn-agregarOperacion" onclick="editarOperacion(${id})">Editar</button>
+        <button type="button" class="btn-agregarOperacion" onclick="editarOperacion(${JSON.stringify(ele)})">Editar</button>
     </form>
 `
 }
 
-const editarOperacion = async (id) => {
+const editarOperacion = async (ele) => {
     console.warn("editado")
   
 
@@ -74,10 +74,10 @@ const editarOperacion = async (id) => {
     
     
     console.log(operacion)
-    console.log(id)
+    console.log(ele.id)
    
 
-    fetch(`/operaciones/${id}`, { //hacerlo con clase aux
+    fetch(`/operaciones/${ele.id}`, { //hacerlo con clase aux
         method: 'PUT', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -95,9 +95,9 @@ const editarOperacion = async (id) => {
         
 }
 
-const mostrarFormularioEdit = (id) =>   //pasamanos de id desde lista a formulario edit, reever
-    document.querySelector(".contenedor-editar").innerHTML = getFormularioEdit(id)
-
+const mostrarFormularioEdit = (ele) =>   //pasamanos de id desde lista a formulario edit, reever
+    document.querySelector(".contenedor-editar").innerHTML = getFormularioEdit(ele)
+    
 
 
 const borrar = (id) => {
@@ -131,6 +131,8 @@ document.querySelector(".input-mostrar").addEventListener("click", async (e) => 
     }catch(error){
         console.log("form aun no existe", error.message())
     }
+
+    
     let valorSeleccionado = document.querySelector(".input-mostrar").value
     console.log("valor sel", valorSeleccionado)
 
