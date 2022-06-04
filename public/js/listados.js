@@ -34,12 +34,7 @@ const getFormularioEdit = (id) => {
         <label for="fecha">fecha</label>
         <input type="date" for="fecha" id="fecha" name="fecha" class="input-fecha">
 
-        <label for="tipo">tipo</label>
-        <select id="tipo" name="tipo" class="input-tipo">
-            <option value="EGRESO">EGRESO</option>
-            <option value="INGRESO">INGRESO</option>
-
-        </select>
+         
         <button type="button" class="btn-agregarOperacion" onclick="editarOperacion(${id})">Editar</button>
     </form>
 `
@@ -51,21 +46,21 @@ const editarOperacion = async (id) => {
     let concepto = document.querySelector(".input-concepto").value  //reever
     let monto = document.querySelector(".input-monto").value
     let fecha = document.querySelector(".input-fecha").value
-    let tipo = document.querySelector(".input-tipo").value
+   
 
 
     document.querySelector(".input-concepto").value = ""
     document.querySelector(".input-monto").value = ""
     document.querySelector(".input-fecha").value = ""
-    document.querySelector(".input-tipo").value = ""
 
-    let operacion = { concepto, monto, fecha, tipo }
+    
+    let operacion = { concepto, monto, fecha }
 
     console.log(operacion)
     console.log(id)
    
 
-    fetch(`/operaciones/${id}`, {
+    fetch(`/operaciones/${id}`, { //hacerlo con
         method: 'PUT', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
