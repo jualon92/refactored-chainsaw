@@ -27,7 +27,7 @@
 }
 
 @media screen and (min-width:1000px){
-    .contenedor-home{
+    .contenedor-home, .contenedor-alta{
         margin-left:16%;
         margin-right:16%;
     }
@@ -38,5 +38,14 @@
         justify-content: center;
         align-items: center;
     }
+
+    
 }
 
+.contenedor-editar{
+    display: flex;
+    flex-direction: inherit;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

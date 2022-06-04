@@ -17,6 +17,8 @@
 </head>
 
 <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Operaciones</a>
@@ -42,40 +44,43 @@
             </div>
         </div>
     </nav>
-    <h1>Listado</h1>
+    <div class="contenedor-alta">
+        <h1>Listado</h1>
 
-    <form action=" ">
-        <label for="tipo"> elegir tipo de listado a mostrar: </label>
-        <select id="tipo" name="tipo" class="input-mostrar">
-            <option type="submit" value="EGRESO">EGRESO</option>
-            <option type="submit" value="INGRESO">INGRESO</option>
+        <form action=" ">
+            <label class="mb-3" for="tipo"> elegir tipo de listado a mostrar: </label>
+            <select id="tipo" name="tipo" class="input-mostrar">
+                <option type="submit" value="EGRESO">EGRESO</option>
+                <option type="submit" value="INGRESO">INGRESO</option>
 
-        </select>
-    </form>
+            </select>
+        </form>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">concepto</th>
-                <th scope="col">monto</th>
-                <th scope="col">fecha</th>
-                <th scope="col">tipo</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Borrar</th>
+        <table class="table table-hover table table-hover  table-striped mb-5 ">
+            <thead>
+                <tr>
+                    <th scope="col">concepto</th>
+                    <th scope="col">monto</th>
+                    <th scope="col">fecha</th>
+                    <th scope="col">tipo</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Borrar</th>
 
-            </tr>
-        </thead>
-        <tbody class="tabla-disp">
+                </tr>
+            </thead>
+            <tbody class="tabla-disp">
 
-        </tbody>
-    </table>
-
-
-
-
-    <div class="contenedor-editar">
+            </tbody>
+        </table>
 
 
+
+
+        <div class="contenedor-editar">
+
+
+
+        </div>
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
