@@ -2,7 +2,18 @@
 
 console.warn("listado")
 let DATA = [] //no esta bueno var global, rever
+const getData = async (tipo) => {
+    let response = await fetch("/operaciones/") //fetch 
+    let data = await response.json()
+    
+    console.log(data)
+    
+    //filtrar segun valor seleccionado
+    return data.filter(operacion => operacion.tipo == tipo)
 
+}
+ 
+DATA =  getData("INGRESO")
 
 //seria mejor hacerlo con template engine ie handlebars 
 const getTemplate = (ele) => {
@@ -55,40 +66,40 @@ const getFormularioEdit = (ele) => { //podria remarquarse el elemento a editar e
 
 const editarOperacion = async (ele) => {
     console.warn("editado")
-  
 
-    let inputConcepto = document.querySelector(".input-concepto") 
+
+    let inputConcepto = document.querySelector(".input-concepto")
     let inputMonto = document.querySelector(".input-monto")
     let inputFecha = document.querySelector(".input-fecha")
     let listaInputs = [inputConcepto, inputMonto, inputFecha]
 
- 
 
-    
-    
-   
+
+
+
+
     var operacion = {}
-    
-    if (inputConcepto.value !== ""){ //refactor
+
+    if (inputConcepto.value !== "") { //refactor
         operacion.concepto = inputConcepto.value
     }
-    if (inputMonto.value !== ""){
+    if (inputMonto.value !== "") {
         operacion.monto = inputMonto.value
         console.log("passing monto", inputMonto.value)
         console.log("passing obj", operacion.monto)
     }
-    if (inputFecha.value !== ""){
+    if (inputFecha.value !== "") {
         operacion.fecha = inputFecha.value
     }
-    
+
     listaInputs.forEach(input => {
         input.value = "" // blank after pressing edit btn
     });
-    
-    
+
+
     console.log(operacion)
     console.log(ele.id)
-   
+
 
     fetch(`/operaciones/${ele.id}`, { //hacerlo con clase aux
         method: 'PUT', // or 'PUT'
@@ -104,13 +115,13 @@ const editarOperacion = async (ele) => {
         .catch((error) => {
             console.error('Error:', error.message());
         });
-    
-        
+
+
 }
 
 const mostrarFormularioEdit = (ele) =>   //pasamanos de id desde lista a formulario edit, reever
     document.querySelector(".contenedor-editar").innerHTML = getFormularioEdit(ele)
-    
+
 
 
 const borrar = (id) => {
@@ -123,7 +134,7 @@ const borrar = (id) => {
     console.log(DATA)
     let dataNueva = DATA.filter(ele => ele.id !== parseInt(id))
 
-
+    console.log("data nueva", dataNueva)
     document.querySelector(".tabla-disp").innerHTML = ""  //rever, podria ser una funcion, logica repetida
     dataNueva.forEach(ele => {
 
@@ -137,9 +148,9 @@ const borrar = (id) => {
 
 //al cambiar de categoria de lista, seccion editar deberia desaparecer para no confundir
 document.querySelector(".input-mostrar").addEventListener("change", e => {
-    try{
+    try {
         document.querySelector(".contenedor-editar").innerHTML = ""
-    }catch(error){
+    } catch (error) {
         console.log("form aun no existe", error.message())
     }
 
@@ -147,8 +158,8 @@ document.querySelector(".input-mostrar").addEventListener("change", e => {
 
 document.querySelector(".input-mostrar").addEventListener("click", async (e) => {
 
-    
-    
+
+
     let valorSeleccionado = document.querySelector(".input-mostrar").value
     console.log("valor sel", valorSeleccionado)
 
@@ -201,13 +212,14 @@ document.querySelector(".input-mostrar").addEventListener("click", async (e) => 
 
 const setDataInicial = async () => {
     //data inicial
-    let response = await fetch("/operaciones") //fetch 
+    let response = await fetch("/operaciones/") //fetch 
     let data = await response.json()
 
     console.log(data)
 
     //filtrar segun valor seleccionado
     let dataFiltrada = data.filter(operacion => operacion.tipo == "EGRESO")
+    DATA = dataFiltrada
     dataFiltrada.forEach(ele => {
 
 
