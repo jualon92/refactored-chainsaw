@@ -20,7 +20,7 @@ const getTemplate = (ele) => {
 }
 
 
-const getFormularioEdit = (ele) => {
+const getFormularioEdit = (ele) => { //podria remarquarse el elemento a editar en tabla
     return `<h2>Editar operacion ${ele.concepto}</h2>
     <form action="" class="formulario-alta">
         
@@ -122,16 +122,19 @@ const borrar = (id) => {
 
 }
 
-
-
-document.querySelector(".input-mostrar").addEventListener("click", async (e) => {
-
+//al cambiar de categoria de lista, seccion editar deberia desaparecer para no confundir
+document.querySelector(".input-mostrar").addEventListener("change", e => {
     try{
         document.querySelector(".contenedor-editar").innerHTML = ""
     }catch(error){
         console.log("form aun no existe", error.message())
     }
 
+})
+
+document.querySelector(".input-mostrar").addEventListener("click", async (e) => {
+
+    
     
     let valorSeleccionado = document.querySelector(".input-mostrar").value
     console.log("valor sel", valorSeleccionado)
