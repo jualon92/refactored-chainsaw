@@ -53,13 +53,16 @@
 
     
     .contenedor-listado{
-    
+           
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-left:16%;
-            margin-right:16%;
+             /* margin-left:16%;
+            margin-right:16%; */
+
+            width: 50%;
+            margin: 0 auto;
     }
     
 }
