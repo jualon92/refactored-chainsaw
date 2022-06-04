@@ -13,7 +13,7 @@ const getTemplate = (ele) => {
         <td>${ele.monto}</td>
         <td>${ele.fecha}</td>
         <td>${ele.tipo}</td>
-        <td> <button type="button" class="btn-editar btn btn-success" onclick='mostrarFormularioEdit(${JSON.stringify(ele)})'>Editar</button> </td>
+        <td> <button type="button" class="btn-editar btn btn-success " onclick='mostrarFormularioEdit(${JSON.stringify(ele)})'>Editar</button> </td>
         <td scope="col"> <button type="button" class="btn btn-danger btn-eliminarOp" onclick='borrar(${ele.id})'>
         <svg
                                     xmlns="http://www.w3.org/2000/svg"
