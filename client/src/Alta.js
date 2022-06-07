@@ -1,10 +1,10 @@
  
  
-function Agregar() {
+function Alta() {
     return (
       <div>"p" </div> 
     );
   }
   
-  export default Agregar;
+  export default Alta;
   

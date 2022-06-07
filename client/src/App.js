@@ -1,19 +1,21 @@
 import "./App.css";
 
 import Home from "./Home";
-import Agregar from "./Agregar";
+import Alta from "./Alta";
 import NavBar from "./NavBar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
+
+//hashrouter porque quiero que conserve f5 
 function App() {
   return (
-    <Router>
+    <Router> 
       <div className="App">
         <NavBar />
         <div className="content">
           <Routes>
-            <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/agregar" element={<Agregar />}></Route>
+            <Route   path="/" element={<Home />}></Route>
+            <Route exact path="/alta" element={<Alta />}></Route>
           </Routes>
         </div>
       </div>
