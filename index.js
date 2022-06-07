@@ -1,17 +1,19 @@
 const express = require('express');
 const compression = require("compression")
+const path = require("path");
+
 const operacionesRouter = require("./routes/Operaciones.js")
 const app = express();
 
  
  
 app.use(compression());
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname,"client","build"))) //buscar build react
 app.use(express.json()) // body parser
 app.use(express.urlencoded({extended: true})) // para que haga pedido url encoded
 
 
-const port = 3000;
+const port = 3002;
 app.listen(port, () => console.log(`operaciones app listening on port ${port}!`));
 
 app.get('/', (req, res) => res.send('Operaciones App'));
