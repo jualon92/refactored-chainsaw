@@ -8,8 +8,8 @@
     "run dev": "nodemon index.js",
     "client": "cd client && npm start",
     "server-dependencies": "npm instal",
-    "client-dependencies": "npm install --prefix client",
-    "install": "npm install concurrently --save &  \"npm run client-dependencies\" \"npm run server.dependencies\" "
+    "client-dependencies": "cd client && npm install",
+    "install": "npm install concurrently --save &  \"npm run client-dependencies\" \"npm run server-dependencies\" "
   },
   "repository": {
     "type": "git",
