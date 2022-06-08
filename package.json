@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run dev": "nodemon index.js",
-   
     "server-dependencies": "npm install",
-    "client-dependencies": "cd client &&  npm cache clear --force  & npm install",
+    "client-dependencies": "cd client &&  npm cache clear --force  & npm install & npm run build",
     "install-all-deps": "npm install concurrently --save &  concurrently  \"npm run client-dependencies\" \"npm run server-dependencies\" "
   },
   "repository": {
