@@ -4,9 +4,8 @@ Seguimiento de operaciones.  Pueden agregarse operaciones, ver operaciones segun
 Se cuenta con la opcion de agregar muchas operaciones para testing
  
 
- 
 ## iniciar => 
-npm i  
+npm run install-all-deps    
 nodemon run dev
 
 ## Back
