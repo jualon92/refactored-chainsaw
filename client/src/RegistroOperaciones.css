@@ -1,0 +1,22 @@
+ 
+.Alta-contenedor{
+    width: 30%;
+    margin: 0 auto;
+}
+
+.Alta-formulario{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.Alta-input{
+    text-align: center;
+}
+
+.Alta-btnAgregar{
+    
+        align-self: end;
+        margin-top: 20px;
+  
+}
