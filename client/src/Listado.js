@@ -1,18 +1,35 @@
+import "./Listado.css"
 import { useState } from "react";
-
+import useFetch from "./useFetch";
+import TablaDataSegunTipo from "./TablaDataSegunTipo";
 const Listado = () => {
   //deberia recibir la data o fetchearla por si mismo? -- indepndiente, fetch
-  const [eleccionTipo, setEleccionTipo] = useState("EGRESO");
+  const [eleccionTipo, setEleccionTipo] = useState("");
+  const { error, estaPendiente, data: operaciones } = useFetch("/operaciones"); // custom hook de fetch con try/catch
+  const [mostrarEleccion, setmostrarEleccion] = useState(false);
+  //me gusta mas que escuche cambios en eleccion de tipo
+  //  const [eleccionSubmit, setEleccionSubmit] = useState("")
+
+  const filtrarDataSegun = (lista, tipo) =>
+    lista.filter((op) => op.tipo == tipo);
 
   const procesarCambio = (e) => {
     const value = e.target.value;
     setEleccionTipo(value);
-    console.log(eleccionTipo);
+
+    console.log("eleccion es ", eleccionTipo);
+    setmostrarEleccion(true);
   };
 
+  /*
   const readData = (e) => {
-      console.log("eleccion es ", eleccionTipo)
-  }
+    //  console.log("eleccion es ", eleccionTipo);
+    //   setmostrarEleccion(true)
+    //  setEleccionSubmit(eleccionTipo)
+    //  console.log("seleccion enviada", eleccionSubmit)
+  };
+  */
+
 
   return (
     <div class="contenedor-listado">
@@ -29,6 +46,9 @@ const Listado = () => {
           class="input-mostrar"
           onChange={(e) => procesarCambio(e)}
         >
+          <option value="" disabled selected hidden>
+            tipo...
+          </option>
           <option type="submit" value="EGRESO">
             EGRESO
           </option>
@@ -37,7 +57,7 @@ const Listado = () => {
           </option>
         </select>
       </form>
-
+      {/*}
       <button
         type="button btn"
         onClick={(e) => readData(e)}
@@ -45,7 +65,7 @@ const Listado = () => {
       >
         Consultar
       </button>
-
+  */}
       <table class="table table-hover table table-hover  table-striped mb-5 table-responsive-sm">
         <thead>
           <tr>
@@ -56,7 +76,12 @@ const Listado = () => {
             <th scope="col">Accion</th>
           </tr>
         </thead>
-        <tbody class="tabla-disp"></tbody>
+
+        {mostrarEleccion && (
+          <TablaDataSegunTipo
+            operaciones={filtrarDataSegun(operaciones, eleccionTipo)}
+          />
+        )}
       </table>
 
       <div class="contenedor-editar"></div>
