@@ -1,5 +1,4 @@
- 
-    select:invalid{
-        color: gray;
-    }
+.Listado-placeholderSelect{
+    color:grey;
+}
  

@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./Home";
 import Alta from "./Alta";
 import NavBar from "./NavBar";
-import Listado from "./Listado"
+import Listado from "./Listado";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 

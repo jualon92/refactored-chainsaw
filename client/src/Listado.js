@@ -46,8 +46,8 @@ const Listado = () => {
           class="input-mostrar"
           onChange={(e) => procesarCambio(e)}
         >
-          <option value="" disabled selected hidden>
-            tipo...
+          <option value="" disabled selected hidden >
+            <span>tipo...</span> 
           </option>
           <option type="submit" value="EGRESO">
             EGRESO
