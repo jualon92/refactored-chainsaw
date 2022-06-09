@@ -1,7 +1,8 @@
 import "./RegistroOperaciones.css"
 import {useState} from "react"
 const RegistroOperaciones = () => {
-    const [state, setState] = useState({concepto:"", monto:"",fecha:"",tipo:"EGRESO"})
+    const estadoInicial = {concepto:"", monto:"",fecha:"",tipo:"EGRESO"}
+    const [state, setState] = useState(estadoInicial)
     const [estaDesactivado, setEstaDesactivado] = useState(true)
     
     const putData = async (e) => {
@@ -24,6 +25,9 @@ const RegistroOperaciones = () => {
                 .catch((error) => {
                     console.error('Error:', error);
                 });
+                setState(estadoInicial);
+                setEstaDesactivado(true)
+                console.log("estado reiniciado", state)
         }else{
             console.warn("falta input completar")
         }
