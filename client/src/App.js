@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Home";
 import Alta from "./Alta";
 import NavBar from "./NavBar";
+import Listado from "./Listado"
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route   path="/" element={<Home />}></Route>
             <Route exact path="/alta" element={<Alta />}></Route>
+            <Route exact path="/listado" element={<Listado />}></Route>
           </Routes>
         </div>
       </div>
