@@ -1,5 +1,5 @@
-import "./Listado.css"
-import { useState } from "react";
+import "./Listado.css";
+import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import TablaDataSegunTipo from "./TablaDataSegunTipo";
 const Listado = () => {
@@ -9,16 +9,47 @@ const Listado = () => {
   const [mostrarEleccion, setmostrarEleccion] = useState(false);
   //me gusta mas que escuche cambios en eleccion de tipo
   //  const [eleccionSubmit, setEleccionSubmit] = useState("")
+  const [data, setData] = useState(null);
+  const [listaBase, setListaBase] = useState(null)
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/operaciones");
+      if (!response.ok) {
+        // error del server
+        throw new Error(response.statusText);
+      }
 
-  const filtrarDataSegun = (lista, tipo) =>
-    lista.filter((op) => op.tipo == tipo);
+      const datos = await response.json();
+      setData(datos);
+      setListaBase(datos)
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const getDataFiltrada = (d, tipo) => {
+    console.log("filtrado por", d, tipo);
+    const arrFiltrado = d.filter((op) => op.tipo == tipo);
+    console.log(arrFiltrado);
+    return arrFiltrado
+  };
 
   const procesarCambio = (e) => {
-    const value = e.target.value;
+    //toma valor, la elecc
+    const value = e.target.value; //rever
+    console.log(value);
+
     setEleccionTipo(value);
 
     console.log("eleccion es ", eleccionTipo);
-    setmostrarEleccion(true);
+    console.log(data) 
+    setData(listaBase) //al cambiar de categoria, lista default
+
+    setmostrarEleccion(true) 
   };
 
   /*
@@ -30,6 +61,10 @@ const Listado = () => {
   };
   */
 
+  const handleDelete = () => {  
+    console.log("borrando")
+  setData([])
+  };
 
   return (
     <div class="contenedor-listado">
@@ -46,8 +81,8 @@ const Listado = () => {
           class="input-mostrar"
           onChange={(e) => procesarCambio(e)}
         >
-          <option value="" disabled selected hidden >
-            <span>tipo...</span> 
+          <option value="" disabled selected hidden>
+            <span>tipo...</span>
           </option>
           <option type="submit" value="EGRESO">
             EGRESO
@@ -79,8 +114,8 @@ const Listado = () => {
 
         {mostrarEleccion && (
           <TablaDataSegunTipo
-            operaciones={filtrarDataSegun(operaciones, eleccionTipo)}
-          />
+            operaciones={data} tipo={eleccionTipo}
+            setData={setData}/>
         )}
       </table>
 

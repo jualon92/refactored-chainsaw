@@ -1,9 +1,28 @@
+import { useState } from "React";
+
 const TablaDataSegunTipo = (props) => {
   console.log("arr tabla", props.operaciones);
+  const getDataSinEle = (arrData, ele) => {
+    const concepto = ele.concepto 
+    const id = ele.id 
+    console.log("concepto buscado", concepto) 
+    console.log("id es", id)
+    const listaFiltrada = arrData.filter((op) => op.concepto !== concepto);
+    console.log(listaFiltrada) 
 
+    //backend, refactor con clase auxiliar
+    fetch(`/operaciones/${ele.id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.text()) // or res.json()
+      .then((res) => console.log(res)) 
+
+
+    return listaFiltrada;
+  };
   return (
     <tbody class="tabla-disp">
-      {props.operaciones.map((ele) => {
+      {props.operaciones.filter(op => op.tipo == props.tipo).map((ele) => {
         return (
           <tr class="table-active">
             <th scope="row">{ele.concepto}</th>
@@ -21,8 +40,11 @@ const TablaDataSegunTipo = (props) => {
               </button>
               <button
                 type="button"
+                name={ele.concepto}
                 class="btn btn-danger btn-eliminarOp"
-                onclick="borrar(${ele.id})"
+                onClick={() =>
+                  props.setData(getDataSinEle(props.operaciones, ele))
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
