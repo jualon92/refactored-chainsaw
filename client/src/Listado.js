@@ -32,14 +32,7 @@ const Listado = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  /*
-  const getDataFiltrada = (d, tipo) => {
-    console.log("filtrado por", d, tipo);
-    const arrFiltrado = d.filter((op) => op.tipo == tipo);
-    console.log(arrFiltrado);
-    return arrFiltrado
-  };
-  */
+ 
 
   const handleReplace = (eleNuevo) => {
      //encontrar ese elemento en el array, cambiarle todos los campos
