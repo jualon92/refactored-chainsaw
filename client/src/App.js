@@ -1,9 +1,9 @@
-import "./App.css";
+
 
 import Home from "./Home";
-import Alta from "./Alta";
-import NavBar from "./NavBar";
-import Listado from "./Listado";
+import Alta from "./AltaFormulario/Alta";
+import NavBar from "./navBar/NavBar";
+import Listado from "./Listado/Listado";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 

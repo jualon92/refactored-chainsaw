@@ -1,6 +1,6 @@
 import "./Listado.css";
 import { useEffect, useState } from "react";
-import useFetch from "./useFetch";
+import useFetch from "../useFetch";
 import TablaDataSegunTipo from "./TablaDataSegunTipo";
 import FormEdit from "./FormEdit"
 const Listado = () => {

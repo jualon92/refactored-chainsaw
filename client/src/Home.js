@@ -36,7 +36,7 @@ function compare( a, b ) {
   
   return (
     <div className="contenedor-home">
-      <div className="contenedor-resumen">
+      <div className="contenedor-resumen d-flex flex-column align-items-center">
        
         {/*candidato a componente*/}
         {error && <div>{error}</div>}
