@@ -2,15 +2,17 @@ import "./Listado.css";
 import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import TablaDataSegunTipo from "./TablaDataSegunTipo";
+import FormEdit from "./FormEdit"
 const Listado = () => {
   //deberia recibir la data o fetchearla por si mismo? -- indepndiente, fetch
   const [eleccionTipo, setEleccionTipo] = useState("");
   const { error, estaPendiente, data: operaciones } = useFetch("/operaciones"); // custom hook de fetch con try/catch
   const [mostrarEleccion, setmostrarEleccion] = useState(false);
+  const [mostrarEdicion, setMostrarEdicion] = useState(null)
   //me gusta mas que escuche cambios en eleccion de tipo
   //  const [eleccionSubmit, setEleccionSubmit] = useState("")
   const [data, setData] = useState(null);
-  const [listaBase, setListaBase] = useState(null)
+  const [listaBase, setListaBase] = useState(null) 
   const fetchData = async () => {
     try {
       const response = await fetch("/operaciones");
@@ -30,14 +32,25 @@ const Listado = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  /*
   const getDataFiltrada = (d, tipo) => {
     console.log("filtrado por", d, tipo);
     const arrFiltrado = d.filter((op) => op.tipo == tipo);
     console.log(arrFiltrado);
     return arrFiltrado
   };
+  */
 
+  const handleReplace = (eleNuevo) => {
+     //encontrar ese elemento en el array, cambiarle todos los campos
+     let indiceUbicacion = data.findIndex(ele => eleNuevo.id == ele.id)
+      let arrLista = data.filter(ele => eleNuevo.id !== ele.id) 
+      console.log("lista sin", eleNuevo, arrLista)
+      arrLista.splice(indiceUbicacion,0, eleNuevo )
+      setData(arrLista)
+     // setData([...arrLista, eleNuevo])
+      console.log("nueva data",  data)
+  }
   const procesarCambio = (e) => {
     //toma valor, la elecc
     const value = e.target.value; //rever
@@ -50,22 +63,20 @@ const Listado = () => {
     setData(listaBase) //al cambiar de categoria, lista default
 
     setmostrarEleccion(true) 
+    setMostrarEdicion(false)
   };
+  const handleEdit = (ele) => {
+     console.log("handle edit", ele)
+    setMostrarEdicion(ele)
+  
+    console.log(mostrarEdicion)
+  }
 
-  /*
-  const readData = (e) => {
-    //  console.log("eleccion es ", eleccionTipo);
-    //   setmostrarEleccion(true)
-    //  setEleccionSubmit(eleccionTipo)
-    //  console.log("seleccion enviada", eleccionSubmit)
-  };
-  */
+  
 
-  const handleDelete = () => {  
-    console.log("borrando")
-  setData([])
-  };
-
+  const ocultar = () =>{
+    setMostrarEdicion(false)
+  }
   return (
     <div class="contenedor-listado">
       <h1>Listado</h1>
@@ -115,11 +126,13 @@ const Listado = () => {
         {mostrarEleccion && (
           <TablaDataSegunTipo
             operaciones={data} tipo={eleccionTipo}
-            setData={setData}/>
+            setData={setData} handleEdit={handleEdit}/> //rever
         )}
       </table>
 
-      <div class="contenedor-editar"></div>
+      {/*podria ser child de tablaDataSegunTipo*/}
+        {mostrarEdicion &&  <FormEdit ele={mostrarEdicion} ocultar={ocultar} handleReplace={handleReplace}/>}
+       
     </div>
   );
 };

@@ -34,7 +34,7 @@ const TablaDataSegunTipo = (props) => {
               <button
                 type="button"
                 class="btn-editar btn btn-success "
-                onclick="mostrarFormularioEdit(${JSON.stringify(ele)})"
+                onClick={() => props.handleEdit(ele)}
               >
                 Editar
               </button>
