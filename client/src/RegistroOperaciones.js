@@ -1,5 +1,6 @@
 import "./RegistroOperaciones.css"
 import {useState} from "react"
+import "./Alta.css"
 const RegistroOperaciones = () => {
     const estadoInicial = {concepto:"", monto:"",fecha:"",tipo:"EGRESO"}
     const [state, setState] = useState(estadoInicial)

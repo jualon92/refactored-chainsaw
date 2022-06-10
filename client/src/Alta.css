@@ -1,1 +1,5 @@
- 
+@media (pointer:coarse) and (max-width:800px){
+    .Alta-contenedor{
+        width: 60%!important;
+    }
+} 

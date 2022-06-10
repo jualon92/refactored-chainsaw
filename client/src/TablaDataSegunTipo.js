@@ -1,3 +1,4 @@
+import "./TablaDataSegun.css";
 import { useState } from "React";
 
 const TablaDataSegunTipo = (props) => {
@@ -41,7 +42,7 @@ const TablaDataSegunTipo = (props) => {
               <button
                 type="button"
                 name={ele.concepto}
-                class="btn btn-danger btn-eliminarOp"
+                className="btn btn-danger TablaDataSegun-btnEliminarOp"
                 onClick={() =>
                   props.setData(getDataSinEle(props.operaciones, ele))
                 }

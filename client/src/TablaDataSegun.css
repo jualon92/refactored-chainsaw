@@ -1,0 +1,17 @@
+@media (pointer:coarse) and (max-width:900px){
+    .TablaDataSegun-btnEliminarOp{
+        width: 100%;
+    }
+} 
+
+.TablaDataSegun-btnEliminarOp{
+    max-width: 70.89px;
+max-height: 39px;
+}
+
+@media (pointer:coarse) and (min-width:900px){
+    .TablaDataSegun-btnEliminarOp{
+        min-width: 70.89px;
+    }
+} 
+ 
