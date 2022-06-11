@@ -2,54 +2,31 @@ import "./Listado.css";
 import { useEffect, useState } from "react";
 import useFetch from "../useFetch";
 import TablaDataSegunTipo from "./TablaDataSegunTipo";
-import FormEdit from "./FormEdit"
+import FormEdit from "./FormEdit";
+import { fetchData } from "../helpers/api";
 const Listado = () => {
-  //deberia recibir la data o fetchearla por si mismo? -- indepndiente, fetch
   const [eleccionTipo, setEleccionTipo] = useState("");
-  const { error, estaPendiente, data: operaciones } = useFetch("/operaciones"); // custom hook de fetch con try/catch
- // const [mostrarEleccion, setmostrarEleccion] = useState(false);
-  const [mostrarEdicion, setMostrarEdicion] = useState(null)
-  //me gusta mas que escuche cambios en eleccion de tipo
-  //  const [eleccionSubmit, setEleccionSubmit] = useState("")
+  const [mostrarEdicion, setMostrarEdicion] = useState(null);
   const [data, setData] = useState(null);
- // const [listaBase, setListaBase] = useState(null) 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/operaciones");
-      if (!response.ok) {
-        // error del server
-        throw new Error(response.statusText);
-      }
 
-      const datos = await response.json();
-      setData(datos);
-   //   setListaBase(datos)
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
 
   useEffect(() => {
-    fetchData();
+     fetchData(setData); //rever, callback
   }, []);
- 
-
 
   const handleReplace = (eleNuevo) => {
-     //encontrar indiceElemento
-     let indiceUbicacion = data.findIndex(ele => eleNuevo.id == ele.id)
-     
-     //devolver lista sin elemento
-      let arrLista = data.filter(ele => eleNuevo.id !== ele.id) 
-      console.log("lista sin", eleNuevo, arrLista) 
-      //ubicar ele nuevo en la posicion del ele inicial
-      arrLista.splice(indiceUbicacion,0, eleNuevo )
+    //encontrar indiceElemento
+    let indiceUbicacion = data.findIndex((ele) => eleNuevo.id == ele.id);
 
+    //devolver lista sin elemento
+    let arrLista = data.filter((ele) => eleNuevo.id !== ele.id);
+    console.log("lista sin", eleNuevo, arrLista);
+    //ubicar ele nuevo en la posicion del ele inicial
+    arrLista.splice(indiceUbicacion, 0, eleNuevo);
 
-      setData(arrLista)
-     // setData([...arrLista, eleNuevo])
-      console.log("nueva data",  data)
-  }
+    setData(arrLista);
+    console.log("nueva data", data);
+  };
 
   const procesarCambio = (e) => {
     //toma valor, la elecc
@@ -59,22 +36,19 @@ const Listado = () => {
     setEleccionTipo(value);
 
     console.log("eleccion es ", eleccionTipo);
-    console.log(data) 
-   // setData(listaBase) //al cambiar de categoria, traer lista del fetch inicial
+    console.log(data);
 
-  //  setmostrarEleccion(true) 
-
-    ocultar() //quitar de la vista para no confundir
+    ocultar(); //quitar de la vista para no confundir
   };
   const handleEdit = (ele) => {
-     console.log("handle edit", ele)
-    setMostrarEdicion(ele)
-  
-    console.log(mostrarEdicion)
-  }
+    console.log("handle edit", ele);
+    setMostrarEdicion(ele);
 
-  const ocultar = () =>  setMostrarEdicion(false)
-  
+    console.log(mostrarEdicion);
+  };
+
+  const ocultar = () => setMostrarEdicion(false);
+
   return (
     <div class="contenedor-listado">
       <h1>Listado</h1>
@@ -123,14 +97,22 @@ const Listado = () => {
 
         {eleccionTipo && (
           <TablaDataSegunTipo
-            operaciones={data} tipo={eleccionTipo}
-            setData={setData} handleEdit={handleEdit}/> //rever
+            operaciones={data}
+            tipo={eleccionTipo}
+            setData={setData}
+            handleEdit={handleEdit}
+          /> //rever
         )}
       </table>
 
       {/*podria ser child de tablaDataSegunTipo*/}
-        {mostrarEdicion &&  <FormEdit ele={mostrarEdicion} ocultar={ocultar} handleReplace={handleReplace}/>}
-       
+      {mostrarEdicion && (
+        <FormEdit
+          ele={mostrarEdicion}
+          ocultar={ocultar}
+          handleReplace={handleReplace}
+        />
+      )}
     </div>
   );
 };

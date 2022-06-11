@@ -1,23 +1,26 @@
 import "./TablaDataSegun.css";
 import { useState } from "React";
-
+import {delOperacion} from "../helpers/api"
 const TablaDataSegunTipo = (props) => {
   console.log("arr tabla", props.operaciones);
   const getDataSinEle = (arrData, ele) => {
     const concepto = ele.concepto 
     const id = ele.id 
+
+     
     console.log("concepto buscado", concepto) 
     console.log("id es", id)
     const listaFiltrada = arrData.filter((op) => op.concepto !== concepto);
     console.log(listaFiltrada) 
 
     //backend, refactor con clase auxiliar
-    fetch(`/operaciones/${ele.id}`, {
+    /*fetch(`/operaciones/${ele.id}`, {
       method: "DELETE",
     })
       .then((res) => res.text()) // or res.json()
-      .then((res) => console.log(res)) 
+      .then((res) => console.log(res)) */
 
+    delOperacion(id)
 
     return listaFiltrada;
   };
