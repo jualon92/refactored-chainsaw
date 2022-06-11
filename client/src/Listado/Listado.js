@@ -12,6 +12,7 @@ const Listado = () => {
 
   useEffect(() => {
      fetchData(setData); //rever, callback
+    
   }, []);
 
   const handleReplace = (eleNuevo) => {
