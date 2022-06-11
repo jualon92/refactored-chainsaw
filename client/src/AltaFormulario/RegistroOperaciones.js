@@ -27,6 +27,7 @@ const RegistroOperaciones = () => {
       .then((data) => {
         console.log("success", data);
         setState(estadoInicial);
+        setEstaDesactivado(true) //desactivado luego de submit
       })
       .catch((error) => { 
         console.error("Error:", error);
