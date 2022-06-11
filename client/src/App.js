@@ -13,7 +13,7 @@ function App() {
     <Router> 
       <div className="App">
         <NavBar />
-        <div className="content">
+        <div className="content text-center">
           <Routes>
             <Route   path="/" element={<Home />}></Route>
             <Route exact path="/alta" element={<Alta />}></Route>
