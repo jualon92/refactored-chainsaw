@@ -17,13 +17,10 @@ const Listado = () => {
   const handleReplace = (eleNuevo) => {
     //encontrar indiceElemento
     let indiceUbicacion = data.findIndex((ele) => eleNuevo.id == ele.id);
-
     //devolver lista sin elemento
     let arrLista = data.filter((ele) => eleNuevo.id !== ele.id);
-    console.log("lista sin", eleNuevo, arrLista);
     //ubicar ele nuevo en la posicion del ele inicial
     arrLista.splice(indiceUbicacion, 0, eleNuevo);
-
     setData(arrLista);
     console.log("nueva data", data);
   };
@@ -31,21 +28,11 @@ const Listado = () => {
   const procesarCambio = (e) => {
     //toma valor, la elecc
     const value = e.target.value; //rever
-    console.log(value);
-
     setEleccionTipo(value);
-
-    console.log("eleccion es ", eleccionTipo);
-    console.log(data);
-
     ocultar(); //quitar de la vista para no confundir
   };
-  const handleEdit = (ele) => {
-    console.log("handle edit", ele);
-    setMostrarEdicion(ele);
-
-    console.log(mostrarEdicion);
-  };
+  const handleEdit = (ele) =>  setMostrarEdicion(ele);
+ 
 
   const ocultar = () => setMostrarEdicion(false);
 
