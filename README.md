@@ -1,4 +1,6 @@
-# refactored-chainsaw
+# refactored-chainsaw 
+
+Se utilizo  JS vanilla en main branch y React en branch pruebaReact
  
 Seguimiento de operaciones.  Pueden agregarse operaciones, ver operaciones segun tipo, y editar/borrar.
 Se cuenta con la opcion de agregar muchas operaciones para testing
